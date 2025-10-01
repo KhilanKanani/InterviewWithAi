@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(FetchCurrentUser());
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 z-50">
