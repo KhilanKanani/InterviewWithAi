@@ -27,7 +27,7 @@ const SignUp = async (req, res) => {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
             sameSite: "none",
-            secure: false
+            secure: true
         });
 
         return res.status(200).json({
@@ -71,7 +71,7 @@ const Login = async (req, res) => {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000,
             sameSite: "none",
-            secure: false
+            secure: true
         });
 
         return res.status(200).json({
@@ -93,8 +93,7 @@ const Login = async (req, res) => {
 
 const Logout = async (req, res) => {
     try {
-        res.clearCookie("token");
-
+        res.clearCookie("token");   // removes cookie
         return res.status(200).json({
             success: true,
             message: "Logout Successfull...",
@@ -109,5 +108,6 @@ const Logout = async (req, res) => {
         })
     }
 }
+
 
 module.exports = { SignUp, Login, Logout };
