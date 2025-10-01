@@ -81,12 +81,12 @@ export default function LoginPage() {
 
         <p className="mt-6 text-center text-white/80">
           Don't have an account?{" "}
-          <a
-            href="/signup"
+          <button
+            onClick={() => navigate('/signup')}
             className="text-white font-semibold underline hover:text-yellow-300"
           >
             Sign Up
-          </a>
+          </button>
         </p>
       </div>
     </div>
