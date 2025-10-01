@@ -16,7 +16,7 @@ const Logout = () => {
         const logout = async () => {
             try {
                 dispatch(setIsLoading(true));
-                await axios.post(`${SERVER_URL}/api/auth/logout`, { withCredentials: true });
+                await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
                 dispatch(setUserdata(null));
                 dispatch(setAllInterview(null));
                 dispatch(setIsLoading(false));
