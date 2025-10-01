@@ -99,7 +99,7 @@ const HomePage = () => {
           </button>
           <button
             className="text-white cursor-pointer font-semibold hover:text-gray-200"
-            onClick={() => navigate("/Logout")}
+            onClick={() => navigate("/logout")}
           >
             Logout
           </button>
@@ -126,7 +126,7 @@ const HomePage = () => {
         <nav className="flex items-start flex-col space-y-6 p-6 text-white font-semibold">
           <button onClick={() => navigate("/history")}>History</button>
           <button onClick={() => navigate("/profile")}>Profile</button>
-          <button onClick={() => navigate("/Logout")}>Logout</button>
+          <button onClick={() => navigate("/logout")}>Logout</button>
         </nav>
       </div>
 

@@ -62,7 +62,7 @@ const Interviewer = () => {
           onClick={() => navigate("/logout")}
           className="text-white flex gap-2 cursor-pointer items-center font-semibold hover:text-gray-200 mt-2 sm:mt-0"
         >
-          <FaSignOutAlt className="sm:mt-1 cursor-pointer sm:text-lg text-2xl" /> <p className="hidden sm:block">Logout</p>
+          <FaSignOutAlt onClick={() => navigate('/logout')} className="sm:mt-1 cursor-pointer sm:text-lg text-2xl" /> <p className="hidden sm:block">Logout</p>
         </button>
       </header>
 

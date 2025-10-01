@@ -11,7 +11,7 @@ const FindCurrentUser = async (req, res, next) => {
             });
         }
 
-        const verify = await jwt.verify(token, process.env.JWT_SECRET);
+        const verify = await jwt.verify(token, `${process.env.JWT_SECRET}`);
         // console.log("Verify Token :", verify.userId);
         req.userId = verify.userId;
 
