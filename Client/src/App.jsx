@@ -51,7 +51,7 @@ const App = () => {
       element:
         <div>
           {
-            !Userdata?.user ? <Login /> : Userdata?.user?.userType === "admin" ? <Interviewer /> : <Interviewee />
+            !Userdata ? <Login /> : Userdata?.user?.userType === "admin" ? <Interviewer /> : <Interviewee />
           }
         </div>
 
@@ -61,7 +61,7 @@ const App = () => {
       path: '/login',
       element: <div>
         {
-          !Userdata?.user ? <Login /> : Userdata?.user?.userType === "admin" ? <Interviewer /> : <Interviewee />
+          !Userdata ? <Login /> : Userdata?.user?.userType === "admin" ? <Interviewer /> : <Interviewee />
         }
       </div>
     },
@@ -70,7 +70,7 @@ const App = () => {
       path: '/signup',
       element: <div>
         {
-          !Userdata?.user ? <SignupPage /> : Userdata?.user?.userType === "admin" ? <Interviewer /> : <Interviewee />
+          !Userdata ? <SignupPage /> : Userdata?.user?.userType === "admin" ? <Interviewer /> : <Interviewee />
         }
       </div>
 
@@ -80,7 +80,7 @@ const App = () => {
       path: '/profile',
       element: <div>
         {
-          Userdata?.user ? <Profile /> : <Login />
+          Userdata ? <Profile /> : <Login />
         }
       </div>
     },
@@ -89,7 +89,7 @@ const App = () => {
       path: '/history',
       element: <div>
         {
-          Userdata?.user ? <History /> : <Login />
+          Userdata ? <History /> : <Login />
         }
       </div>
     },
@@ -98,7 +98,7 @@ const App = () => {
       path: '/details/:id',
       element: <div>
         {
-          Userdata?.user ? <CandidateDetails /> : <Login />
+          Userdata ? <CandidateDetails /> : <Login />
         }
       </div>
     },
@@ -107,7 +107,7 @@ const App = () => {
       path: '/interview/:id',
       element: <div>
         {
-          Userdata?.user ? <InterviewStart /> : <Login />
+          Userdata ? <InterviewStart /> : <Login />
         }
       </div>
     },
@@ -116,7 +116,7 @@ const App = () => {
       path: '/summary/:id',
       element: <div>
         {
-          Userdata?.user ? <ViewSummary /> : <Login />
+          Userdata ? <ViewSummary /> : <Login />
         }
       </div>
     },
@@ -126,7 +126,7 @@ const App = () => {
       path: '/view/:id',
       element: <div>
         {
-          Userdata?.user ? <ViewInterview /> : <Login />
+          Userdata ? <ViewInterview /> : <Login />
         }
       </div>
     },
