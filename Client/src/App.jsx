@@ -19,6 +19,7 @@ const App = () => {
   const dispatch = useDispatch();
   const Userdata = useSelector(state => state.user.userdata);
   const isLoading = useSelector(state => state.user.isLoading);
+  console.log(Userdata);
 
   useEffect(() => {
     dispatch(FetchCurrentUser());
