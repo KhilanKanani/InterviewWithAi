@@ -16,10 +16,10 @@ const Logout = () => {
         const logout = async () => {
             try {
                 dispatch(setIsLoading(true));
-                await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
+                await axios.get(`${SERVER_URL}/api/auth/logout`, { withCredentials: true });
+                dispatch(setIsLoading(false));
                 dispatch(setUserdata(null));
                 dispatch(setAllInterview(null));
-                dispatch(setIsLoading(false));
 
                 toast.success("Logout Successful...");
                 navigate("/login");
