@@ -117,7 +117,7 @@ export default function SignupPage() {
                     Already have an account?{" "}
                     <button
                         onClick={() => navigate('/login')}
-                        className="text-white font-semibold underline hover:text-yellow-300"
+                        className="text-white cursor-pointer font-semibold underline hover:text-yellow-300"
                     >
                         Login
                     </button>

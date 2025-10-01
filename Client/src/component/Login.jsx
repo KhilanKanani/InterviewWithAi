@@ -83,7 +83,7 @@ export default function LoginPage() {
           Don't have an account?{" "}
           <button
             onClick={() => navigate('/signup')}
-            className="text-white font-semibold underline hover:text-yellow-300"
+            className="text-white cursor-pointer font-semibold underline hover:text-yellow-300"
           >
             Sign Up
           </button>
