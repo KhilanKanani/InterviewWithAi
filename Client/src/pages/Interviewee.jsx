@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setInterviewdata } from "../redux/InterviewSlice";
 import { toast } from "react-toastify";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { setUserdata } from "../redux/UserSlice";
 
 const HomePage = () => {
   const Userdata = useSelector((state) => state.user.userdata);
@@ -51,23 +50,6 @@ const HomePage = () => {
       toast.error(err.response?.data?.message);
     } finally {
       setLoading(false);
-    }
-  };
-
-  // Inside HomePage component
-  const handleLogout = async () => {
-    try {
-      await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
-
-      // Clear redux user data
-      dispatch(setUserdata(null));
-      dispatch(setInterviewdata(null));
-
-      toast.success("Logged out successfully!");
-      navigate("/login"); // redirect to login page
-    } catch (err) {
-      console.error("Logout Error:", err.message);
-      toast.error("Logout failed. Try again.");
     }
   };
 
@@ -117,7 +99,7 @@ const HomePage = () => {
           </button>
           <button
             className="text-white cursor-pointer font-semibold hover:text-gray-200"
-            onClick={() => handleLogout()}
+            onClick={() => navigate("/logout")}
           >
             Logout
           </button>
@@ -144,7 +126,7 @@ const HomePage = () => {
         <nav className="flex items-start flex-col space-y-6 p-6 text-white font-semibold">
           <button onClick={() => navigate("/history")}>History</button>
           <button onClick={() => navigate("/profile")}>Profile</button>
-          <button onClick={() => handleLogout()}>Logout</button>
+          <button onClick={() => navigate("/logout")}>Logout</button>
         </nav>
       </div>
 

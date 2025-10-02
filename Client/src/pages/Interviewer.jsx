@@ -2,16 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaSearch, FaSortAmountDown, FaSortAmountUp, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import GetAllInterviewData from "../FindCurrentUser/GetAllInterviewData";
-import { useDispatch, useSelector } from "react-redux";
-import { setInterviewdata } from "../redux/InterviewSlice";
-import { toast } from "react-toastify";
-import axios from "axios";
-import { SERVER_URL } from "../main";
-import { setUserdata } from "../redux/UserSlice";
+import { useSelector } from "react-redux";
 
 const Interviewer = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
   const [sortScoreAsc, setSortScoreAsc] = useState(true);
@@ -21,25 +15,6 @@ const Interviewer = () => {
   // Fetch all candidates
   GetAllInterviewData();
   const candidates = useSelector((state) => state.interview.allInterview);
-
-  // Inside HomePage component
-  const handleLogout = async () => {
-    try {
-      await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
-
-      // Clear redux user data
-      dispatch(setInterviewdata(null));
-      dispatch(setUserdata(null));
-
-
-      toast.success("Logged out successfully!");
-      navigate("/login");
-    } catch (err) {
-      console.error("Logout Error:", err.message);
-      toast.error("Logout failed. Try again.");
-    }
-  };
-
 
   // Search
   useEffect(() => {
@@ -84,7 +59,7 @@ const Interviewer = () => {
           </h1>
         </div>
         <button
-          onClick={() => handleLogout()}
+          onClick={() => navigate("/logout")}
           className="text-white flex gap-2 cursor-pointer items-center font-semibold hover:text-gray-200 mt-2 sm:mt-0"
         >
           <FaSignOutAlt className="sm:mt-1 cursor-pointer sm:text-lg text-2xl" /> <p className="hidden sm:block">Logout</p>
