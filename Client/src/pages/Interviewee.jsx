@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setInterviewdata } from "../redux/InterviewSlice";
 import { toast } from "react-toastify";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { setUserdata } from "../redux/UserSlice";
 
 const HomePage = () => {
   const Userdata = useSelector((state) => state.user.userdata);
@@ -59,6 +60,7 @@ const HomePage = () => {
       await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
 
       // Clear redux user data
+      dispatch(setUserdata(null));
       dispatch(setInterviewdata(null));
 
       toast.success("Logged out successfully!");

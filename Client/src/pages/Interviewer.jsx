@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import GetAllInterviewData from "../FindCurrentUser/GetAllInterviewData";
 import { useDispatch, useSelector } from "react-redux";
 import { setInterviewdata } from "../redux/InterviewSlice";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { SERVER_URL } from "../main";
+import { setUserdata } from "../redux/UserSlice";
 
 const Interviewer = () => {
   const navigate = useNavigate();
@@ -25,9 +29,11 @@ const Interviewer = () => {
 
       // Clear redux user data
       dispatch(setInterviewdata(null));
+      dispatch(setUserdata(null));
+
 
       toast.success("Logged out successfully!");
-      navigate("/login"); // redirect to login page
+      navigate("/login");
     } catch (err) {
       console.error("Logout Error:", err.message);
       toast.error("Logout failed. Try again.");
