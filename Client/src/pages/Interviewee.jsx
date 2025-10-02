@@ -53,6 +53,22 @@ const HomePage = () => {
     }
   };
 
+  // Inside HomePage component
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
+
+      // Clear redux user data
+      dispatch(setInterviewdata(null));
+
+      toast.success("Logged out successfully!");
+      navigate("/login"); // redirect to login page
+    } catch (err) {
+      console.error("Logout Error:", err.message);
+      toast.error("Logout failed. Try again.");
+    }
+  };
+
   const triggerFileInput = () => {
     fileInputRef.current.click();
   };
@@ -99,7 +115,7 @@ const HomePage = () => {
           </button>
           <button
             className="text-white cursor-pointer font-semibold hover:text-gray-200"
-            onClick={() => navigate("/logout")}
+            onClick={() => handleLogout()}
           >
             Logout
           </button>
@@ -126,7 +142,7 @@ const HomePage = () => {
         <nav className="flex items-start flex-col space-y-6 p-6 text-white font-semibold">
           <button onClick={() => navigate("/history")}>History</button>
           <button onClick={() => navigate("/profile")}>Profile</button>
-          <button onClick={() => navigate("/logout")}>Logout</button>
+          <button onClick={() => handleLogout()}>Logout</button>
         </nav>
       </div>
 

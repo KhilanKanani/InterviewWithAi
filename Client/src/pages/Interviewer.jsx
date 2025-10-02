@@ -16,6 +16,23 @@ const Interviewer = () => {
   GetAllInterviewData();
   const candidates = useSelector((state) => state.interview.allInterview);
 
+  // Inside HomePage component
+  const handleLogout = async () => {
+    try {
+      await axios.post(`${SERVER_URL}/api/auth/logout`, {}, { withCredentials: true });
+
+      // Clear redux user data
+      dispatch(setInterviewdata(null));
+
+      toast.success("Logged out successfully!");
+      navigate("/login"); // redirect to login page
+    } catch (err) {
+      console.error("Logout Error:", err.message);
+      toast.error("Logout failed. Try again.");
+    }
+  };
+
+
   // Search
   useEffect(() => {
     const filteredData = candidates?.user?.filter((c) =>
@@ -59,10 +76,10 @@ const Interviewer = () => {
           </h1>
         </div>
         <button
-          onClick={() => navigate("/logout")}
+          onClick={() => handleLogout()}
           className="text-white flex gap-2 cursor-pointer items-center font-semibold hover:text-gray-200 mt-2 sm:mt-0"
         >
-          <FaSignOutAlt onClick={() => navigate('/logout')} className="sm:mt-1 cursor-pointer sm:text-lg text-2xl" /> <p className="hidden sm:block">Logout</p>
+          <FaSignOutAlt className="sm:mt-1 cursor-pointer sm:text-lg text-2xl" /> <p className="hidden sm:block">Logout</p>
         </button>
       </header>
 
