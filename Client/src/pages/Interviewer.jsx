@@ -3,6 +3,7 @@ import { FaSearch, FaSortAmountDown, FaSortAmountUp, FaSignOutAlt } from "react-
 import { useNavigate } from "react-router-dom";
 import GetAllInterviewData from "../FindCurrentUser/GetAllInterviewData";
 import { useSelector } from "react-redux";
+import { setInterviewdata } from "../redux/InterviewSlice";
 
 const Interviewer = () => {
   const navigate = useNavigate();
