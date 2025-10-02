@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { FaSearch, FaSortAmountDown, FaSortAmountUp, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import GetAllInterviewData from "../FindCurrentUser/GetAllInterviewData";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setInterviewdata } from "../redux/InterviewSlice";
 
 const Interviewer = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
   const [sortScoreAsc, setSortScoreAsc] = useState(true);
